@@ -7,9 +7,9 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import br.com.senac.Aluno;
-import br.com.senac.Disciplina;
-import br.com.senac.Turma;
+import br.com.senac.entity.Aluno;
+import br.com.senac.entity.Disciplina;
+import br.com.senac.entity.Turma;
 import br.com.senac.repository.AlunoRepository;
 import br.com.senac.repository.DisciplinaRepository;
 import br.com.senac.repository.TurmaRepository;

@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.com.senac.Aluno;
+import br.com.senac.entity.Aluno;
 import br.com.senac.repository.AlunoRepository;
 
 @Service

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.com.senac.Aluno;
+import br.com.senac.entity.Aluno;
 import br.com.senac.service.AlunoService;
 
 

@@ -1,4 +1,4 @@
-package br.com.senac;
+package br.com.senac.entity;
 
 import java.io.Serializable;
 
