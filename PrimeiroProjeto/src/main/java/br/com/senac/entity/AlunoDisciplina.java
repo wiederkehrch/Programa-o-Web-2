@@ -1,5 +1,7 @@
 package br.com.senac.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 
@@ -7,9 +9,15 @@ import javax.persistence.ManyToOne;
   Aluno (id_aluno) e Disciplina (id_disciplina) -> chave composta */
 
 @Embeddable
-public class AlunoDisciplina {
+public class AlunoDisciplina implements Serializable {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3633942199087339259L;
+
+
 	@ManyToOne
 	private Aluno aluno;
 	
