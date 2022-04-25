@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.senac.constantes.Messages;
 import br.com.senac.entity.Turma;
 import br.com.senac.service.TurmaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 
+@Tag(name = Messages.SWAGGER_TAG_TURMA_ENDPOINT)
 @RestController
 @RequestMapping("/turma")
 public class TurmaResource {
@@ -25,6 +29,7 @@ public class TurmaResource {
 	private TurmaService turmaService;
 	
 	
+	@Operation(description = Messages.SWAGGER_GET_ALL)
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<Turma>> listarAluno(){
 		List<Turma> turmas = turmaService.listaTodasTurmas();
@@ -32,6 +37,7 @@ public class TurmaResource {
 	}
 	
 	
+	@Operation(description = Messages.SWAGGER_GET)
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Turma> buscaPorId(@PathVariable Integer id) throws ObjectNotFoundException{
 		Turma turma = turmaService.buscarPorId(id);
@@ -39,6 +45,7 @@ public class TurmaResource {
 	}
 	
 	
+	@Operation(description = Messages.SWAGGER_INSERT)
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> inserir(@RequestBody Turma objTurma){
 		Turma turma = turmaService.salvar(objTurma);
@@ -47,6 +54,7 @@ public class TurmaResource {
 	}
 	
 	
+	@Operation(description = Messages.SWAGGER_DELETE)
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> excluir(@PathVariable Integer id){
 		turmaService.excluir(id);
@@ -54,6 +62,8 @@ public class TurmaResource {
 	}
 	
 	
+	
+	@Operation(description = Messages.SWAGGER_UPDATE)
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> alterar(@RequestBody Turma objTurma, @PathVariable Integer id){
 		objTurma.setId(id);

@@ -11,10 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.senac.constantes.Messages;
 import br.com.senac.entity.Avaliacao;
 import br.com.senac.service.AvaliacaoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 
+@Tag(name = Messages.SWAGGER_TAG_AVALIACAO_ENDPOINT)
 @RestController
 @RequestMapping("/avaliacao")
 public class AvaliacaoResource {
@@ -23,6 +27,7 @@ public class AvaliacaoResource {
 	private AvaliacaoService avaliacaoService;
 	
 	
+	@Operation(description = Messages.SWAGGER_GET_ALL)
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<Avaliacao>> listarAvaliacao(){
 		List<Avaliacao> listaAvaliacao = avaliacaoService.findAll();
@@ -30,6 +35,7 @@ public class AvaliacaoResource {
 	}
 	
 	
+	@Operation(description = Messages.SWAGGER_INSERT)
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> inserir(@RequestBody Avaliacao objAvaliacao){
 		Avaliacao avaliacao = avaliacaoService.save(objAvaliacao);

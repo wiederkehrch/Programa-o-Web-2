@@ -13,14 +13,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.com.senac.constantes.Messages;
 import br.com.senac.entity.Aluno;
 import br.com.senac.service.AlunoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 //url: localhost:8080
 //uri: aluno
 //endpoint: localhost:8080/aluno
 
+
+@Tag(name = Messages.SWAGGER_TAG_ALUNO_ENDPOINT)
 @RestController
 @RequestMapping("/aluno")
 public class AlunoResource {
@@ -30,6 +35,7 @@ public class AlunoResource {
 	private AlunoService alunoService;
 	
 	
+	@Operation(description = Messages.SWAGGER_GET_ALL)
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<Aluno>> listarAluno(){
 		List<Aluno> alunos = alunoService.listaTodosAlunos();
@@ -37,6 +43,7 @@ public class AlunoResource {
 	}
 	
 	
+	@Operation(description = Messages.SWAGGER_GET)
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Aluno> buscaPorId(@PathVariable Integer id) throws ObjectNotFoundException{
 		Aluno aluno = alunoService.buscarPorId(id);
@@ -44,6 +51,7 @@ public class AlunoResource {
 	}
 	
 	
+	@Operation(description = Messages.SWAGGER_INSERT)
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> inserir(@RequestBody Aluno objAluno){
 		Aluno aluno = alunoService.salvar(objAluno);
@@ -52,6 +60,7 @@ public class AlunoResource {
 	}
 	
 	
+	@Operation(description = Messages.SWAGGER_DELETE)
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> excluir(@PathVariable Integer id){
 		alunoService.excluir(id);
@@ -59,6 +68,7 @@ public class AlunoResource {
 	}
 	
 	
+	@Operation(description = Messages.SWAGGER_UPDATE)
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> alterar(@RequestBody Aluno objAluno, @PathVariable Integer id){
 		objAluno.setId(id);
