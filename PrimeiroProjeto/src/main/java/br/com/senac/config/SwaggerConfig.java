@@ -9,7 +9,7 @@ import io.swagger.v3.oas.models.info.Info;
 
 /* Swagger
  http://localhost:8080/api-sistema/swagger-ui/index.html#/
- */
+ 
 
 @Configuration
 public class SwaggerConfig {
@@ -35,3 +35,17 @@ public class SwaggerConfig {
 	}
 
 }
+
+*
+*
+-------------- application.properties do Swagger --------------
+
+app.name = @project.name@
+app.description = @project.description@
+app.version = @project.version@
+
+springdoc.api-docs.path=/api-docs
+
+server.servlet.context-path=/api-sistema
+
+*/

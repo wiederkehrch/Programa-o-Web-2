@@ -1,0 +1,1 @@
+insert into disciplina (nome_disciplina, id_disciplina) values ('Lógica', 4)
